@@ -1,0 +1,76 @@
+[project]
+name = "nadoo-flow-core"
+version = "0.1.0"
+description = "Nadoo Flow Core - A flexible workflow orchestration framework with multi-backend support"
+authors = [{ name = "Nadoo Team", email = "dev@nadoo.ai" }]
+requires-python = ">=3.11"
+readme = "README.md"
+license = { text = "MIT" }
+keywords = ["workflow", "orchestration", "flow", "agent", "ai"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+dependencies = [
+    "pydantic>=2.7.4,<3.0.0",
+    "typing-extensions>=4.7.0",
+]
+
+[project.optional-dependencies]
+# Core extensions
+cel = ["celpy>=1.0.0"]  # For CEL expression evaluation
+
+# Development dependencies
+dev = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.23.0",
+    "pytest-cov>=4.0.0",
+    "black>=23.0.0",
+    "ruff>=0.1.0",
+    "mypy>=1.7.0",
+]
+
+[project.urls]
+Homepage = "https://nadoo.ai"
+Documentation = "https://docs.nadoo.ai"
+Repository = "https://github.com/nadoo-ai/nadoo-flow-core"
+"Bug Tracker" = "https://github.com/nadoo-ai/nadoo-flow-core/issues"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/nadoo_flow"]
+
+[tool.black]
+line-length = 120
+target-version = ['py311']
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "C4", "SIM"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
+addopts = "-v --tb=short --cov=nadoo_flow"
+asyncio_mode = "auto"
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
+ignore_missing_imports = true

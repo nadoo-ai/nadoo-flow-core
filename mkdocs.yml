@@ -1,0 +1,212 @@
+# MkDocs Configuration for Nadoo Flow Core
+site_name: Nadoo Flow Core Documentation
+site_description: A flexible workflow orchestration framework for agentic AI applications
+site_author: Nadoo Team
+site_url: https://nadoo.ai/docs/flow-core
+
+# Repository
+repo_name: nadoo-ai/nadoo-flow-core
+repo_url: https://github.com/nadoo-ai/nadoo-flow-core
+edit_uri: edit/main/docs/
+
+# Copyright
+copyright: Copyright &copy; 2024 Nadoo
+
+# Theme
+theme:
+  name: material
+  language: en
+  palette:
+    # Light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    # Dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+  font:
+    text: Roboto
+    code: Roboto Mono
+
+  features:
+    - navigation.instant        # Instant loading
+    - navigation.tracking       # URL tracking
+    - navigation.tabs           # Top-level tabs
+    - navigation.tabs.sticky    # Sticky tabs
+    - navigation.sections       # Sections in sidebar
+    - navigation.expand         # Expand sections
+    - navigation.indexes        # Section index pages
+    - navigation.top            # Back to top button
+    - search.suggest            # Search suggestions
+    - search.highlight          # Highlight search terms
+    - search.share              # Share search results
+    - header.autohide           # Auto-hide header
+    - content.code.copy         # Copy code blocks
+    - content.code.annotate     # Code annotations
+    - content.tabs.link         # Link content tabs
+
+  icon:
+    repo: fontawesome/brands/github
+    logo: material/library
+
+# Plugins
+plugins:
+  - search:
+      lang:
+        - en
+        - ko
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            docstring_style: google
+            show_source: true
+            show_root_heading: true
+            show_root_full_path: false
+            show_object_full_path: false
+            show_category_heading: true
+            show_if_no_docstring: false
+            inherited_members: true
+            members_order: source
+            separate_signature: true
+            unwrap_annotated: true
+            filters: ["!^_"]
+            merge_init_into_class: true
+            signature_crossrefs: true
+  - awesome-pages
+  - git-revision-date-localized:
+      enable_creation_date: true
+      type: timeago
+
+# Extensions
+markdown_extensions:
+  # Python Markdown
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - toc:
+      permalink: true
+      toc_depth: 3
+
+  # Python Markdown Extensions
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: material.extensions.emoji.twemoji
+      emoji_generator: material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink:
+      repo_url_shorthand: true
+      user: nadoo-ai
+      repo: nadoo-flow-core
+  - pymdownx.smartsymbols
+  - pymdownx.snippets:
+      check_paths: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+# Navigation
+nav:
+  - Home: index.md
+
+  - Getting Started:
+    - Installation: getting-started/installation.md
+    - Quick Start: getting-started/quickstart.md
+    - Core Concepts: getting-started/concepts.md
+
+  - User Guide:
+    - Nodes & Workflows: guide/nodes-workflows.md
+    - Memory Management: guide/memory.md
+    - Streaming: guide/streaming.md
+    - Parallel Execution: guide/parallel.md
+    - Resilience: guide/resilience.md
+    - Caching: guide/caching.md
+    - Rate Limiting: guide/rate-limiting.md
+    - Tools: guide/tools.md
+
+  - Examples:
+    - Basic Chatbot: examples/chatbot.md
+    - Streaming Chat: examples/streaming.md
+    - Parallel Search: examples/parallel-search.md
+    - RAG Pipeline: examples/rag.md
+    - Human-in-the-Loop: examples/hitl.md
+
+  - Integration:
+    - LangChain: integration/langchain.md
+    - CrewAI: integration/crewai.md
+    - AutoGen: integration/autogen.md
+
+  - API Reference:
+    - Core: api/core.md
+    - Chain: api/chain.md
+    - Memory: api/memory.md
+    - Streaming: api/streaming.md
+    - Parallel: api/parallel.md
+    - Resilience: api/resilience.md
+    - Parsers: api/parsers.md
+    - Callbacks: api/callbacks.md
+    - Caching: api/caching.md
+    - Rate Limiting: api/rate-limiting.md
+    - Prompts: api/prompts.md
+    - Batch: api/batch.md
+    - Tools: api/tools.md
+
+  - Development:
+    - Contributing: development/contributing.md
+    - Architecture: development/architecture.md
+    - Testing: development/testing.md
+
+  - About:
+    - Changelog: about/changelog.md
+    - License: about/license.md
+
+# Extra
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/nadoo-ai/nadoo-flow-core
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/nadoo_ai
+    - icon: fontawesome/brands/discord
+      link: https://discord.gg/nadoo
+
+  version:
+    provider: mike
+    default: latest
+
+  analytics:
+    provider: google
+    property: G-XXXXXXXXXX
