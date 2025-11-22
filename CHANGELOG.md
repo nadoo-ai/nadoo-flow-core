@@ -14,7 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Enhanced documentation with tutorials
 - Performance benchmarks
 
-## [0.1.0] - 2025-01-XX
+## [0.1.0] - 2025-11-22
 
 ### Added
 - Initial public release
